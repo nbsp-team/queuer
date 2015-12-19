@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/close_queue"
+        android:title="Закрыть очередь"
+        app:showAsAction="never" />
+    <item android:id="@+id/delete_queue"
+        android:title="Удалить очередь"
+        app:showAsAction="never" />
+    <item android:id="@+id/description"
+        android:title="Описание"
+        app:showAsAction="never" />
+</menu>

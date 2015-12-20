@@ -29,9 +29,7 @@ public class DB {
         return instance;
     }
 
-
-    private static StorIOSQLite init(Context context) {
-
+    private static void init(Context context) {
         instance = DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(new DbOpenHelper(context))
                 .addTypeMapping(Queue.class, SQLiteTypeMapping.<Queue>builder()

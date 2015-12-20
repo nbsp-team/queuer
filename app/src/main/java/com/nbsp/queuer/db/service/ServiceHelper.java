@@ -39,8 +39,12 @@ public class ServiceHelper {
     private Map<String,Long> pendingRequests = new HashMap<String,Long>();
 
     public long getQueues() {
+        if (pendingRequests.containsKey(QUEUES_HASHKEY)){
+            return pendingRequests.get(QUEUES_HASHKEY);
+        }
 
         long requestId = generateRequestID();
+
         pendingRequests.put(QUEUES_HASHKEY, requestId);
 
         ResultReceiver serviceCallback = new ResultReceiver(null){
@@ -62,9 +66,7 @@ public class ServiceHelper {
     }
 
     private void handleGetQueuesResponse(int resultCode, Bundle resultData){
-
-
-        Intent origIntent = (Intent)resultData.getParcelable(QueuerService.ORIGINAL_INTENT_EXTRA);
+        Intent origIntent = (Intent) resultData.getParcelable(QueuerService.ORIGINAL_INTENT_EXTRA);
 
         if(origIntent != null){
             long requestId = origIntent.getLongExtra(REQUEST_ID, 0);
@@ -76,7 +78,6 @@ public class ServiceHelper {
             resultBroadcast.putExtra(EXTRA_RESULT_CODE, resultCode);
 
             ctx.sendBroadcast(resultBroadcast);
-
         }
     }
 

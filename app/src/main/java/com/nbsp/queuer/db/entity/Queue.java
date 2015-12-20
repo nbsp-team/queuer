@@ -64,7 +64,7 @@ public class Queue {
         this.currentMemberId = currentMemberId;
     }
 
-    public Queue newQueue(@Nullable Long id, @NonNull String title, @NonNull Long creatorId,
+    public static Queue newQueue(@Nullable Long id, @NonNull String title, @NonNull Long creatorId,
                   @NonNull String creatorName, @Nullable String description, @NonNull Boolean isActive,
                   @Nullable Integer maxMembers, @NonNull Long currentMemberId) {
         return new Queue(id, title, creatorId, creatorName, description, isActive, maxMembers,

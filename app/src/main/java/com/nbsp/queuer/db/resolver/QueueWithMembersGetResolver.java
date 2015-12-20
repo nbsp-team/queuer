@@ -7,6 +7,7 @@ import com.nbsp.queuer.db.entity.Member;
 import com.nbsp.queuer.db.entity.Queue;
 import com.nbsp.queuer.db.entity.QueueWithMembers;
 import com.nbsp.queuer.db.table.MembersTable;
+import com.nbsp.queuer.db.table.QueuesTable;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.operations.get.DefaultGetResolver;
 import com.pushtorefresh.storio.sqlite.operations.get.GetResolver;
@@ -19,9 +20,6 @@ import java.util.List;
  */
 public class QueueWithMembersGetResolver extends DefaultGetResolver<QueueWithMembers> {
 
-    @NonNull
-    private final GetResolver<Queue> queueGetResolver;
-
     // Sorry for this hack :(
     // We will pass you an instance of StorIO
     // into the mapFromCursor() in v2.0.0.
@@ -30,8 +28,7 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<QueueWithMem
     @NonNull
     private final ThreadLocal<StorIOSQLite> storIOSQLiteFromPerformGet = new ThreadLocal<StorIOSQLite>();
 
-    public QueueWithMembersGetResolver(@NonNull GetResolver<Queue> queueGetResolver) {
-        this.queueGetResolver = queueGetResolver;
+    public QueueWithMembersGetResolver() {
     }
 
     @NonNull
@@ -39,8 +36,16 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<QueueWithMem
     public QueueWithMembers mapFromCursor(@NonNull Cursor cursor) {
         final StorIOSQLite storIOSQLite = storIOSQLiteFromPerformGet.get();
 
-        // Or you can manually parse cursor (it will be sliiightly faster)
-        final Queue queue = queueGetResolver.mapFromCursor(cursor);
+        Queue queue = Queue.newQueue(
+                cursor.getLong(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_TITLE)),
+                cursor.getLong(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_CREATOR_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_CREATOR_NAME)),
+                cursor.getString(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_DESCRIPTION)),
+                cursor.getInt(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_IS_ACTIVE)) == 1,
+                cursor.getInt(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_MAX_MEMBERS)),
+                cursor.getLong(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_CURRENT_MEMBER_ID))
+        );
 
         // Yep, you can reuse StorIO here!
         // Or, you can do manual low level requests here

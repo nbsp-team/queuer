@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="pref_notifications"
+        android:title="@string/notifications"
+        android:summary="@string/show_notifications_summary"
+        android:defaultValue="true" />
+    <ListPreference
+        android:key="pref_theme"
+        android:title="@string/change_theme"
+        android:dialogTitle="@string/select_theme"
+        android:entries="@array/theme_names"
+        android:entryValues="@array/theme_values"
+        android:defaultValue="@string/theme_default" />
+</PreferenceScreen>

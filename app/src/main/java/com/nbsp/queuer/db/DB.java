@@ -5,7 +5,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
 
 import com.nbsp.queuer.db.entity.Member;
+import com.nbsp.queuer.db.entity.MemberStorIOSQLiteDeleteResolver;
+import com.nbsp.queuer.db.entity.MemberStorIOSQLiteGetResolver;
+import com.nbsp.queuer.db.entity.MemberStorIOSQLitePutResolver;
 import com.nbsp.queuer.db.entity.Queue;
+import com.nbsp.queuer.db.entity.QueueStorIOSQLiteDeleteResolver;
+import com.nbsp.queuer.db.entity.QueueStorIOSQLiteGetResolver;
+import com.nbsp.queuer.db.entity.QueueStorIOSQLitePutResolver;
 import com.nbsp.queuer.db.entity.QueueWithMembers;
 import com.nbsp.queuer.db.resolver.QueueWithMembersDeleteResolver;
 import com.nbsp.queuer.db.resolver.QueueWithMembersGetResolver;

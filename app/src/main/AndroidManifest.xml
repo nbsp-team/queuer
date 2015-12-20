@@ -18,6 +18,12 @@
             android:name=".ui.queue.admin.QueueAdminActivity"
             android:label="@string/title_activity_queue_admin"
             android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+        <activity
+            android:name=".ui.queues.MyQueuesActivity"
+            android:label="Мои Очереди"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

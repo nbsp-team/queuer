@@ -80,4 +80,12 @@ public class Queue {
     public Long currentMemberId() {
         return currentMemberId;
     }
+
+    public String title() {
+        return title;
+    }
+
+    public Long creatorId() {
+        return creatorId;
+    }
 }

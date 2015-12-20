@@ -38,4 +38,12 @@ public class QueueWithMembers {
     public Queue queue() {
         return queue;
     }
+
+    public String title() {
+        return queue.title();
+    }
+
+    public Long creatorId() {
+        return queue.creatorId();
+    }
 }

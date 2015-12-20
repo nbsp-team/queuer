@@ -10,7 +10,6 @@ public class QueuesTable {
     
     public static final String TABLE = "queues";
 
-    
     public static final String COLUMN_ID = "_id";
     
     public static final String COLUMN_TITLE = "title";

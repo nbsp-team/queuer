@@ -1,9 +1,14 @@
 package com.nbsp.queuer.api;
 
 import com.google.gson.GsonBuilder;
+import com.nbsp.queuer.db.entity.QueueWithMembers;
+
+import java.util.List;
+
 import retrofit.RestAdapter;
 import retrofit.android.AndroidLog;
 import retrofit.converter.GsonConverter;
+import rx.Observable;
 
 public class Api {
     private static Api instance;
@@ -45,6 +50,11 @@ public class Api {
         return mApiInterface.getWalkingDirections(origin, dest, mode);
     }
     */
+
+    public Observable<List<QueueWithMembers>> getQueues() {
+        if (true) throw new RuntimeException("todo");
+        return null;
+    }
 
 }
 

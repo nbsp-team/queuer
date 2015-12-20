@@ -10,14 +10,14 @@ import static java.util.Collections.unmodifiableList;
 /**
  * Created by egor on 20.12.15.
  */
-public class QueueWithMembers {
+public class DetailQueue {
     @NonNull
     private final Queue queue;
 
     @NonNull
     private final List<Member> members;
 
-    public QueueWithMembers(@NonNull Queue queue, @NonNull List<Member> members) {
+    public DetailQueue(@NonNull Queue queue, @NonNull List<Member> members) {
         this.queue = queue;
         this.members = unmodifiableList(members); // We prefer immutable entities
     }

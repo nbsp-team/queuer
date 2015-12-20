@@ -2,7 +2,7 @@ package com.nbsp.queuer.db.service;
 
 import com.nbsp.queuer.api.Api;
 import com.nbsp.queuer.db.DB;
-import com.nbsp.queuer.db.entity.QueueWithMembers;
+import com.nbsp.queuer.db.entity.DetailQueue;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class MyQueuesProcessor extends BaseProcessor {
 
 
         Api.getInstance().getQueues()
-                .subscribe(new Subscriber<List<QueueWithMembers>>() {
+                .subscribe(new Subscriber<List<DetailQueue>>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -28,7 +28,7 @@ public class MyQueuesProcessor extends BaseProcessor {
                     }
 
                     @Override
-                    public void onNext(List<QueueWithMembers> queues) {
+                    public void onNext(List<DetailQueue> queues) {
                         updateDb(queues);
                         callback.send(RESULT_CODE_OK);
                     }
@@ -36,7 +36,7 @@ public class MyQueuesProcessor extends BaseProcessor {
 
     }
 
-    private void updateDb(List<QueueWithMembers> queues) {
+    private void updateDb(List<DetailQueue> queues) {
         DB.getInstance().put().objects(queues).prepare().executeAsBlocking();
     }
 

@@ -5,12 +5,11 @@ import android.support.annotation.NonNull;
 
 import com.nbsp.queuer.db.entity.Member;
 import com.nbsp.queuer.db.entity.Queue;
-import com.nbsp.queuer.db.entity.QueueWithMembers;
+import com.nbsp.queuer.db.entity.DetailQueue;
 import com.nbsp.queuer.db.table.MembersTable;
 import com.nbsp.queuer.db.table.QueuesTable;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.operations.get.DefaultGetResolver;
-import com.pushtorefresh.storio.sqlite.operations.get.GetResolver;
 import com.pushtorefresh.storio.sqlite.queries.Query;
 
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 /**
  * Created by egor on 20.12.15.
  */
-public class QueueWithMembersGetResolver extends DefaultGetResolver<QueueWithMembers> {
+public class QueueWithMembersGetResolver extends DefaultGetResolver<DetailQueue> {
 
     // Sorry for this hack :(
     // We will pass you an instance of StorIO
@@ -33,7 +32,7 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<QueueWithMem
 
     @NonNull
     @Override
-    public QueueWithMembers mapFromCursor(@NonNull Cursor cursor) {
+    public DetailQueue mapFromCursor(@NonNull Cursor cursor) {
         final StorIOSQLite storIOSQLite = storIOSQLiteFromPerformGet.get();
 
         Queue queue = Queue.newQueue(
@@ -63,7 +62,7 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<QueueWithMem
                 .executeAsBlocking();
 
 
-        return new QueueWithMembers(queue, queueMembers);
+        return new DetailQueue(queue, queueMembers);
     }
 
 }

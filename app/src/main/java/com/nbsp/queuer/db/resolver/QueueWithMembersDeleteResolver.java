@@ -2,7 +2,7 @@ package com.nbsp.queuer.db.resolver;
 
 import android.support.annotation.NonNull;
 
-import com.nbsp.queuer.db.entity.QueueWithMembers;
+import com.nbsp.queuer.db.entity.DetailQueue;
 import com.nbsp.queuer.db.table.MembersTable;
 import com.nbsp.queuer.db.table.QueuesTable;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
@@ -17,17 +17,17 @@ import java.util.Set;
 /**
  * Created by egor on 20.12.15.
  */
-public class QueueWithMembersDeleteResolver extends DeleteResolver<QueueWithMembers> {
+public class QueueWithMembersDeleteResolver extends DeleteResolver<DetailQueue> {
 
     @NonNull
     @Override
     public DeleteResult performDelete(@NonNull StorIOSQLite storIOSQLite,
-                                      @NonNull QueueWithMembers queueWithMembers) {
+                                      @NonNull DetailQueue detailQueue) {
 
-        final List<Object> objectsToDelete = new ArrayList<>(1 + queueWithMembers.members().size());
+        final List<Object> objectsToDelete = new ArrayList<>(1 + detailQueue.members().size());
 
-        objectsToDelete.add(queueWithMembers.queue());
-        objectsToDelete.addAll(queueWithMembers.members());
+        objectsToDelete.add(detailQueue.queue());
+        objectsToDelete.addAll(detailQueue.members());
 
         storIOSQLite
         .delete()

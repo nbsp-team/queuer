@@ -1,7 +1,7 @@
 package com.nbsp.queuer.api;
 
 import com.google.gson.GsonBuilder;
-import com.nbsp.queuer.db.entity.QueueWithMembers;
+import com.nbsp.queuer.db.entity.DetailQueue;
 
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class Api {
     }
     */
 
-    public Observable<List<QueueWithMembers>> getQueues() {
+    public Observable<List<DetailQueue>> getQueues() {
         if (true) throw new RuntimeException("todo");
         return null;
     }

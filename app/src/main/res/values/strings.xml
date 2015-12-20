@@ -20,4 +20,7 @@
     <string name="select_theme">Выберите тему</string>
     <string name="show_notifications_summary">Показывать уведомления</string>
     <string name="notifications">Уведомления</string>
+    <string name="drawer_item_all_queues">Все очереди</string>
+    <string name="drawer_item_my_queues">Мои очереди</string>
+    <string name="title_activity_preferences">Настройки</string>
 </resources>

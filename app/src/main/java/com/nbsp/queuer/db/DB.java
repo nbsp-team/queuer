@@ -1,8 +1,6 @@
 package com.nbsp.queuer.db;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.NonNull;
 
 import com.nbsp.queuer.db.entity.Member;
 import com.nbsp.queuer.db.entity.MemberStorIOSQLiteDeleteResolver;
@@ -12,7 +10,7 @@ import com.nbsp.queuer.db.entity.Queue;
 import com.nbsp.queuer.db.entity.QueueStorIOSQLiteDeleteResolver;
 import com.nbsp.queuer.db.entity.QueueStorIOSQLiteGetResolver;
 import com.nbsp.queuer.db.entity.QueueStorIOSQLitePutResolver;
-import com.nbsp.queuer.db.entity.QueueWithMembers;
+import com.nbsp.queuer.db.entity.DetailQueue;
 import com.nbsp.queuer.db.resolver.QueueWithMembersDeleteResolver;
 import com.nbsp.queuer.db.resolver.QueueWithMembersGetResolver;
 import com.nbsp.queuer.db.resolver.QueueWithMembersPutResolver;
@@ -48,7 +46,7 @@ public class DB {
                         .getResolver(new MemberStorIOSQLiteGetResolver())
                         .deleteResolver(new MemberStorIOSQLiteDeleteResolver())
                         .build())
-                .addTypeMapping(QueueWithMembers.class, SQLiteTypeMapping.<QueueWithMembers>builder()
+                .addTypeMapping(DetailQueue.class, SQLiteTypeMapping.<DetailQueue>builder()
                         .putResolver(new QueueWithMembersPutResolver())
                         .getResolver(new QueueWithMembersGetResolver())
                         .deleteResolver(new QueueWithMembersDeleteResolver())

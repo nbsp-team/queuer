@@ -2,8 +2,6 @@ package com.nbsp.queuer.db.entity;
 
 import android.support.annotation.NonNull;
 
-import com.nbsp.queuer.model.QueueMember;
-import com.nbsp.queuer.model.User;
 
 import java.util.List;
 

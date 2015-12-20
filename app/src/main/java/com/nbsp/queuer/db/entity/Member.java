@@ -47,12 +47,16 @@ public class Member {
         this.timestamp = timestamp;
     }
 
-    public Member newMember(@Nullable Long id, @NonNull Long queueId, @NonNull Long userId,
+    public static Member newMember(@Nullable Long id, @NonNull Long queueId, @NonNull Long userId,
                             @NonNull String userName, @NonNull String timestamp) {
         return new Member(id, queueId, userId, userName, timestamp);
     }
 
     public Long id() {
         return id;
+    }
+
+    public String name() {
+        return userName;
     }
 }

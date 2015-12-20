@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nbsp.queuer.R;
-import com.nbsp.queuer.model.QueueMember;
+import com.nbsp.queuer.db.entity.Member;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,8 @@ public class QueueBaseActivity extends AppCompatActivity {
     }
 
     private void addFakeMembers() {
-        QueueMember m1 = new QueueMember("Viktor Popov");
-        QueueMember m2 = new QueueMember("Viktor Antonov");
+        Member m1 = Member.newMember(12L, 12L, 12L, "Viktor Popov", "213213");
+        Member m2 = Member.newMember(12L, 12L, 12L, "Viktor Antonov", "213213");
         mMembersAdapter.add(m1);
         mMembersAdapter.add(m2);
         mMembersAdapter.notifyDataSetChanged();
@@ -64,13 +64,13 @@ public class QueueBaseActivity extends AppCompatActivity {
 
     public static class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberViewHolder>{
 
-        List<QueueMember> mMembers;
+        List<Member> mMembers;
 
         public MembersAdapter(){
             this.mMembers = new ArrayList<>();
         }
 
-        public void add(QueueMember member) {
+        public void add(Member member) {
             mMembers.add(member);
         }
 
@@ -83,7 +83,7 @@ public class QueueBaseActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(MemberViewHolder holder, int position) {
-            holder.mFullName.setText(mMembers.get(position).getFullName());
+            holder.mFullName.setText(mMembers.get(position).name());
             holder.mPosition.setText(String.valueOf(position));
         }
 

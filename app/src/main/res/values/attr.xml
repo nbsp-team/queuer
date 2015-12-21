@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IconItemView">
+        <attr name="item_icon" format="integer" />
+        <attr name="item_icon_top_margin" format="dimension" />
+    </declare-styleable>
+</resources>

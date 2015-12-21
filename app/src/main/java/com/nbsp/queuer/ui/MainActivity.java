@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.nbsp.queuer.R;
+import com.nbsp.queuer.ui.create.CreateQueueActivity;
 import com.nbsp.queuer.ui.preference.PreferenceActivity;
 import com.nbsp.queuer.ui.queues.AllQueueListFragment;
 import com.nbsp.queuer.ui.queues.MyQueueListFragment;
@@ -43,8 +43,7 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                createQueue();
             }
         });
 
@@ -61,6 +60,11 @@ public class MainActivity extends BaseActivity
             setFragment(AllQueueListFragment.newInstance());
             navigationView.setCheckedItem(R.id.nav_all_queues);
         }
+    }
+
+    private void createQueue() {
+        Intent intent = new Intent(this, CreateQueueActivity.class);
+        startActivity(intent);
     }
 
     @Override

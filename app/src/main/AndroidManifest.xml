@@ -29,6 +29,12 @@
         >
         </activity>
         <activity
+            android:name=".ui.create.CreateQueueActivity"
+            android:label="@string/title_activity_create_queue"
+            android:windowSoftInputMode="stateHidden"
+        >
+        </activity>
+        <activity
             android:name=".ui.preference.PreferenceActivity"
             android:label="@string/title_activity_preferences"
         >

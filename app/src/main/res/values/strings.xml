@@ -24,4 +24,11 @@
     <string name="drawer_item_my_queues">Мои очереди</string>
     <string name="title_activity_preferences">Настройки</string>
     <string name="activity_title_my_queues">Мои Очереди</string>
+    <string name="creating_queue">Создание очереди</string>
+    <string name="pleas_wait">Пожалуйста, подождите</string>
+    <string name="action_create">Создать</string>
+    <string name="user_limit_hint">Макс. количество человек</string>
+    <string name="description_hint">Описание</string>
+    <string name="title_activity_create_queue">Создать очередь</string>
+    <string name="fill_required_fields">Заполните обязательные поля</string>
 </resources>

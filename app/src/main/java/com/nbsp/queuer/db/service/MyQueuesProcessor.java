@@ -26,6 +26,7 @@ public class MyQueuesProcessor extends BaseProcessor {
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
                         callback.send(RESULT_CODE_ERROR);
                     }
 

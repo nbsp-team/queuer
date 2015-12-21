@@ -50,9 +50,6 @@ public class QueuerService extends IntentService {
                     mCallback.send(REQUEST_INVALID, getOriginalIntentBundle());
                 }
                 break;
-
-
-
             default:
                 mCallback.send(REQUEST_INVALID, getOriginalIntentBundle());
                 break;

@@ -23,7 +23,7 @@ import java.util.List;
 
 public class QueueListFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private QueueAdapter mQueueAdapter;
+    protected QueueAdapter mQueueAdapter;
 
     public QueueListFragment() {
     }
@@ -47,12 +47,14 @@ public class QueueListFragment extends Fragment {
         mRecyclerView.setLayoutManager(llm);
         mQueueAdapter = new QueueAdapter();
         mRecyclerView.setAdapter(mQueueAdapter);
-        addFakeQueues();
+
 
         return view;
     }
 
-    private void addFakeQueues() {
+
+
+    protected void addFakeQueues() {
         Queue q1 = Queue.newQueue(1L, "Очередь1", 0L, "Вася", "заходим", true, 15, 1L, "stamp");
         Queue q2 = Queue.newQueue(2L, "Очередь2", 1L, "Волоколам", "заходим1", true, 15, 0L, "stamp");
         Member m1 = Member.newMember(0L, 12L, 12L, "Viktor Popov", "213213");
@@ -62,6 +64,7 @@ public class QueueListFragment extends Fragment {
         members.add(m2);
         DetailQueue qm1 = new DetailQueue(q1, members);
         DetailQueue qm2 = new DetailQueue(q2, members);
+        mQueueAdapter.clear();
         mQueueAdapter.add(qm1);
         mQueueAdapter.add(qm2);
         mQueueAdapter.notifyDataSetChanged();

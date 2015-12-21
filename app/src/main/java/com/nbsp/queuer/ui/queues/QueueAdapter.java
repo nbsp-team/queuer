@@ -64,6 +64,14 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.MemberViewHo
         return mQueues.size();
     }
 
+    public void clear() {
+        mQueues.clear();
+    }
+
+    public void addAll(List<DetailQueue> queues) {
+        mQueues.addAll(queues);
+    }
+
     public static class MemberViewHolder extends RecyclerView.ViewHolder {
         TextView mTitle;
         TextView mInfo;

@@ -2,7 +2,9 @@ package com.nbsp.queuer.db.resolver;
 
 import android.database.Cursor;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
+import com.nbsp.queuer.db.DB;
 import com.nbsp.queuer.db.entity.Member;
 import com.nbsp.queuer.db.entity.Queue;
 import com.nbsp.queuer.db.entity.DetailQueue;
@@ -33,7 +35,7 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<DetailQueue>
     @NonNull
     @Override
     public DetailQueue mapFromCursor(@NonNull Cursor cursor) {
-        final StorIOSQLite storIOSQLite = storIOSQLiteFromPerformGet.get();
+        final StorIOSQLite storIOSQLite = DB.getInstance();
 
         Queue queue = Queue.newQueue(
                 cursor.getLong(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_ID)),
@@ -43,7 +45,8 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<DetailQueue>
                 cursor.getString(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_DESCRIPTION)),
                 cursor.getInt(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_IS_ACTIVE)) == 1,
                 cursor.getInt(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_MAX_MEMBERS)),
-                cursor.getLong(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_CURRENT_MEMBER_ID))
+                cursor.getLong(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_CURRENT_MEMBER_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(QueuesTable.COLUMN_TIMESTAMP))
         );
 
         // Yep, you can reuse StorIO here!
@@ -60,7 +63,6 @@ public class QueueWithMembersGetResolver extends DefaultGetResolver<DetailQueue>
                         .build())
                 .prepare()
                 .executeAsBlocking();
-
 
         return new DetailQueue(queue, queueMembers);
     }

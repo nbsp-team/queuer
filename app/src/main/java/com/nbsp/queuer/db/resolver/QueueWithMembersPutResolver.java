@@ -1,6 +1,7 @@
 package com.nbsp.queuer.db.resolver;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.nbsp.queuer.db.entity.DetailQueue;
 import com.nbsp.queuer.db.table.MembersTable;

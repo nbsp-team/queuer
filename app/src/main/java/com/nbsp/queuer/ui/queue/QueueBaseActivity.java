@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.nbsp.queuer.R;
 import com.nbsp.queuer.db.entity.Member;
+import com.nbsp.queuer.ui.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * Created by egor on 19.12.15.
  */
-public class QueueBaseActivity extends AppCompatActivity {
+public class QueueBaseActivity extends BaseActivity {
     MembersAdapter mMembersAdapter;
     RecyclerView mRecyclerView;
 
@@ -29,9 +30,8 @@ public class QueueBaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queue);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(this);

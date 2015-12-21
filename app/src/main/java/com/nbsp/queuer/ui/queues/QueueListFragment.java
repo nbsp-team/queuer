@@ -53,8 +53,8 @@ public class QueueListFragment extends Fragment {
     }
 
     private void addFakeQueues() {
-        Queue q1 = Queue.newQueue(1L, "Очередь1", 0L, "Вася", "заходим", true, 15, 1L);
-        Queue q2 = Queue.newQueue(2L, "Очередь2", 1L, "Волоколам", "заходим1", true, 15, 0L);
+        Queue q1 = Queue.newQueue(1L, "Очередь1", 0L, "Вася", "заходим", true, 15, 1L, "stamp");
+        Queue q2 = Queue.newQueue(2L, "Очередь2", 1L, "Волоколам", "заходим1", true, 15, 0L, "stamp");
         Member m1 = Member.newMember(0L, 12L, 12L, "Viktor Popov", "213213");
         Member m2 = Member.newMember(12L, 12L, 12L, "Viktor Antonov", "213213");
         List<Member> members = new ArrayList<>();

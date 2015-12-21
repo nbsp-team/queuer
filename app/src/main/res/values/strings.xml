@@ -23,4 +23,5 @@
     <string name="drawer_item_all_queues">Все очереди</string>
     <string name="drawer_item_my_queues">Мои очереди</string>
     <string name="title_activity_preferences">Настройки</string>
+    <string name="activity_title_my_queues">Мои Очереди</string>
 </resources>

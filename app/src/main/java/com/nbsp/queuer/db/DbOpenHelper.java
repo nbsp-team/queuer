@@ -3,6 +3,7 @@ package com.nbsp.queuer.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.nbsp.queuer.db.table.MembersTable;
 import com.nbsp.queuer.db.table.QueuesTable;

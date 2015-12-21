@@ -37,7 +37,7 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.MemberViewHo
         holder.mTitle.setText(queue.title());
         Long currentUserId = 0L; // todo get it
         boolean isAdmin = queue.creatorId().equals(currentUserId);
-        holder.mInfo.setText(makeInfoTextFor(queue, isAdmin));
+        holder.mInfo.setText(makeInfoTextFor(queue));
         if(isAdmin) {
             holder.mIsAdmin.setText("Я админ!");
         } else {
@@ -45,8 +45,9 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.MemberViewHo
         }
     }
 
-    private String makeInfoTextFor(DetailQueue queue, boolean isAdmin) {
+    private String makeInfoTextFor(DetailQueue queue) {
         Long currentUserId = 0L; // todo get it
+        boolean isAdmin = queue.creatorId().equals(currentUserId);
         if (isAdmin) {
             return "14 чел. ~ 1 час 41 мин.";
         } else {

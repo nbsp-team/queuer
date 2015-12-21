@@ -49,11 +49,16 @@ public class Queue {
     @StorIOSQLiteColumn(name = QueuesTable.COLUMN_TITLE)
     String title;
 
+    @NonNull
+    @StorIOSQLiteColumn(name = QueuesTable.COLUMN_TIMESTAMP)
+    String timestamp;
+
     Queue() {}
 
     private Queue(@Nullable Long id, @NonNull String title, @NonNull Long creatorId,
                   @NonNull String creatorName, @Nullable String description, @NonNull Boolean isActive,
-                  @Nullable Integer maxMembers, @NonNull Long currentMemberId) {
+                  @Nullable Integer maxMembers, @NonNull Long currentMemberId,
+                  @NonNull String timestamp) {
         this.id = id;
         this.title = title;
         this.creatorId = creatorId;
@@ -62,13 +67,15 @@ public class Queue {
         this.isActive = isActive;
         this.maxMembers = maxMembers;
         this.currentMemberId = currentMemberId;
+        this.timestamp = timestamp;
     }
 
     public static Queue newQueue(@Nullable Long id, @NonNull String title, @NonNull Long creatorId,
                   @NonNull String creatorName, @Nullable String description, @NonNull Boolean isActive,
-                  @Nullable Integer maxMembers, @NonNull Long currentMemberId) {
+                  @Nullable Integer maxMembers, @NonNull Long currentMemberId,
+                  @NonNull String timestamp) {
         return new Queue(id, title, creatorId, creatorName, description, isActive, maxMembers,
-                currentMemberId);
+                currentMemberId, timestamp);
     }
 
     @Nullable

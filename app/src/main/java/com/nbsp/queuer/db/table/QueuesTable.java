@@ -48,7 +48,7 @@ public class QueuesTable {
                 + COLUMN_TIMESTAMP + " TEXT NOT NULL, "
                 + COLUMN_MAX_MEMBERS + " INTEGER, "
                 + COLUMN_CREATOR_ID + " INTEGER NOT NULL, "
-                + COLUMN_CREATOR_NAME + "TEXT NOT NULL, " // чтобы не хранить таблицу людей
+                + COLUMN_CREATOR_NAME + " TEXT NOT NULL, " // чтобы не хранить таблицу людей
                 + COLUMN_CURRENT_MEMBER_ID + " INTEGER NOT NULL, "
                 + COLUMN_IS_ACTIVE + " INTEGER NOT NULL"
                 // + COLUMN_IS_DELETED + " INTEGER NOT NULL DEFAULT 0"

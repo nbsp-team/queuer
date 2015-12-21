@@ -33,7 +33,7 @@ public class DB {
         return instance;
     }
 
-    private static void init(Context context) {
+    public static void createInstance(Context context) {
         instance = DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(new DbOpenHelper(context))
                 .addTypeMapping(Queue.class, SQLiteTypeMapping.<Queue>builder()

@@ -66,7 +66,6 @@ public class MyQueueListFragment extends QueueListFragment {
                             .executeAsBlocking();
                     mQueueAdapter.addAll(queues);
                     mQueueAdapter.notifyDataSetChanged();
-                    Log.d("hey", "yay");
                 } else {
                     throw new RuntimeException("processor status not ok");
                 }

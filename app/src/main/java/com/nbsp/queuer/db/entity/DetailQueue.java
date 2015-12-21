@@ -3,6 +3,7 @@ package com.nbsp.queuer.db.entity;
 import android.support.annotation.NonNull;
 
 
+import java.util.Date;
 import java.util.List;
 
 import static java.util.Collections.unmodifiableList;
@@ -24,11 +25,22 @@ public class DetailQueue {
 
     public Member getCurrentMember() {
         for(Member m : members) {
-            if (m.id().equals(queue.currentMemberId)) {
+            if (m.userId().equals(queue.currentMemberId)) {
                 return m;
             }
         }
         throw new RuntimeException("current member not found in queue");
+    }
+
+    public int getPositionOfUserWithId(long userId) {
+        int i = 0;
+        for(Member m : members) {
+            if (m.userId().equals(userId)) {
+                return i;
+            }
+            i++;
+        }
+        throw new RuntimeException("user not found in queue");
     }
 
     public List<Member> members() {
@@ -45,5 +57,9 @@ public class DetailQueue {
 
     public Long creatorId() {
         return queue.creatorId();
+    }
+
+    public String timestamp() {
+        return queue.timestamp();
     }
 }

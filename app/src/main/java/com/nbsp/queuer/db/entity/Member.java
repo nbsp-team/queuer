@@ -59,4 +59,8 @@ public class Member {
     public String name() {
         return userName;
     }
+
+    public Long userId() {
+        return userId;
+    }
 }

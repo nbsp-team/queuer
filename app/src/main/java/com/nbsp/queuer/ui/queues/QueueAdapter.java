@@ -1,6 +1,7 @@
 package com.nbsp.queuer.ui.queues;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,9 @@ import android.widget.TextView;
 
 import com.nbsp.queuer.R;
 import com.nbsp.queuer.db.entity.DetailQueue;
+import com.nbsp.queuer.utils.QueueTimeUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,12 +52,30 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.MemberViewHo
         Long currentUserId = 0L; // todo get it
         boolean isAdmin = queue.creatorId().equals(currentUserId);
         if (isAdmin) {
-            return "14 чел. ~ 1 час 41 мин.";
+            String text = String.valueOf(queue.members().size()) + " чел.";
+            try {
+                if(!queue.members().isEmpty()) {
+                    text += " ~ " + QueueTimeUtils.timeUntilNLeavesQueue(queue.members().size() - 1, queue);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return text;
         } else {
-            if (queue.getCurrentMember().id().equals(currentUserId)) {
+            int myPosition = queue.getPositionOfUserWithId(currentUserId);
+            int currentMemberPosition = queue.getPositionOfUserWithId(queue.getCurrentMember().id());
+            if (myPosition == currentMemberPosition) {
                 return "Ваша очередь!";
+            } else if (myPosition > currentMemberPosition) {
+                String text = "Перед вами " + String.valueOf(myPosition) + " чел.";
+                try {
+                    text += " ~ " + QueueTimeUtils.timeUntilNLeavesQueue(myPosition - 1, queue);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return text;
             } else {
-                return "перед вами 8 чел. ~ 1 час 41 мин.";
+                return "Ваша очередь прошла.";
             }
         }
     }

@@ -95,4 +95,8 @@ public class Queue {
     public Long creatorId() {
         return creatorId;
     }
+
+    public String timestamp() {
+        return timestamp;
+    }
 }

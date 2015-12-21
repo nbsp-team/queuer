@@ -70,8 +70,8 @@ public class CreateQueueActivity extends BaseActivity {
     }
 
     private void createQueue() {
-        if (mNameEditText.getText().toString().length() == 0 &&
-                mDescriptionEditText.getText().toString().length() == 0 &&
+        if (mNameEditText.getText().toString().length() == 0 ||
+                mDescriptionEditText.getText().toString().length() == 0 ||
                 mUserLimitEditText.getText().toString().length() == 0) {
             ErrorUtils.showError(this, getString(R.string.fill_required_fields));
             return;

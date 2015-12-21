@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,12 @@ import com.nbsp.queuer.db.entity.DetailQueue;
 import com.nbsp.queuer.db.service.BaseProcessor;
 import com.nbsp.queuer.db.service.ServiceHelper;
 import com.nbsp.queuer.db.table.QueuesTable;
+import com.nbsp.queuer.utils.ErrorUtils;
 
 import java.util.List;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by nickolay on 21.12.15.
@@ -36,12 +41,7 @@ public class MyQueueListFragment extends QueueListFragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        updateList();
-    }
-
-    private void updateList() {
+    protected void updateList() {
         mServiceHelperRequestId = ServiceHelper.getInstance(getContext()).getQueues();
     }
 
@@ -56,18 +56,37 @@ public class MyQueueListFragment extends QueueListFragment {
                     .getLongExtra(ServiceHelper.EXTRA_REQUEST_ID, 0);
 
             if (resultRequestId == mServiceHelperRequestId) {
-
                 int resultCode = intent.getIntExtra(ServiceHelper.EXTRA_RESULT_CODE, 0);
                 if (resultCode == BaseProcessor.RESULT_CODE_OK) {
-                    List<DetailQueue> queues = DB.getInstance().get()
+                    DB.getInstance().get()
                             .listOfObjects(DetailQueue.class)
                             .withQuery(QueuesTable.QUERY_ALL)
                             .prepare()
-                            .executeAsBlocking();
-                    mQueueAdapter.addAll(queues);
-                    mQueueAdapter.notifyDataSetChanged();
+                            .createObservable()
+                            .take(1)
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Subscriber<List<DetailQueue>>() {
+                                @Override
+                                public void onCompleted() {}
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    setRefreshing(false);
+                                    ErrorUtils.showError(getContext(), "Не удалось обновить список очередей");
+                                }
+
+                                @Override
+                                public void onNext(List<DetailQueue> queues) {
+                                    mQueueAdapter.clear();
+                                    mQueueAdapter.addAll(queues);
+                                    mQueueAdapter.notifyDataSetChanged();
+                                    setRefreshing(false);
+                                }
+                            });
+
                 } else {
-                    throw new RuntimeException("processor status not ok");
+                    setRefreshing(false);
+                    ErrorUtils.showError(getContext(), "Не удалось обновить список очередей");
                 }
             }
         }

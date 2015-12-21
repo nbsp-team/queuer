@@ -15,7 +15,13 @@ public class AllQueueListFragment extends QueueListFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+    protected void updateList() {
         addFakeQueues();
+        setRefreshing(false);
     }
 
     public static AllQueueListFragment newInstance() {

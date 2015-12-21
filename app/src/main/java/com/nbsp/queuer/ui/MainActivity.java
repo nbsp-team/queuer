@@ -1,6 +1,7 @@
 package com.nbsp.queuer.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +12,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +20,11 @@ import com.nbsp.queuer.R;
 import com.nbsp.queuer.ui.preference.PreferenceActivity;
 import com.nbsp.queuer.ui.queues.AllQueueListFragment;
 import com.nbsp.queuer.ui.queues.MyQueueListFragment;
-import com.nbsp.queuer.ui.queues.QueueListFragment;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String HELP_PAGE = "http://github.com/nbsp-team/queuer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +108,8 @@ public class MainActivity extends BaseActivity
                 startActivity(intent);
                 break;
             case R.id.nav_help:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(HELP_PAGE));
+                startActivity(browserIntent);
                 break;
         }
 

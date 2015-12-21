@@ -7,12 +7,12 @@
     >
         <item
             android:id="@+id/nav_all_queues"
-            android:icon="@android:drawable/ic_menu_camera"
+            android:icon="@drawable/ic_explore_grey_700_24dp"
             android:title="@string/drawer_item_all_queues"
         />
         <item
             android:id="@+id/nav_my_queues"
-            android:icon="@android:drawable/ic_dialog_dialer"
+            android:icon="@drawable/ic_my_library_grey_700_24dp"
             android:title="@string/drawer_item_my_queues"
         />
     </group>
@@ -23,12 +23,12 @@
     >
         <item
             android:id="@+id/nav_settings"
-            android:icon="@android:drawable/ic_menu_share"
+            android:icon="@drawable/ic_settings_grey_700_24dp"
             android:title="Настройки"
         />
         <item
             android:id="@+id/nav_help"
-            android:icon="@android:drawable/ic_menu_share"
+            android:icon="@drawable/ic_help_grey_700_24dp"
             android:title="Справка"
         />
     </group>

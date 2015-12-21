@@ -2,7 +2,10 @@ package com.nbsp.queuer.api;
 
 import com.google.gson.GsonBuilder;
 import com.nbsp.queuer.db.entity.DetailQueue;
+import com.nbsp.queuer.db.entity.Member;
+import com.nbsp.queuer.db.entity.Queue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.RestAdapter;
@@ -52,8 +55,15 @@ public class Api {
     */
 
     public Observable<List<DetailQueue>> getQueues() {
-        if (true) throw new RuntimeException("todo");
-        return null;
+        List<DetailQueue> list = new ArrayList<>();
+        Queue q1 = Queue.newQueue(1L, "title", 1L, "name", "desc", true, 4, 1L, "stamp");
+        Member m1 = Member.newMember(1L, 1L, 1L, "name", "stamp");
+        Member m2 = Member.newMember(2L, 1L, 2L, "name", "stamp");
+        List<Member> ml = new ArrayList<>();
+        ml.add(m1);
+        ml.add(m2);
+        list.add(new DetailQueue(q1, ml));
+        return Observable.just(list);
     }
 
 }

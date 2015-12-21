@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class ServiceHelper {
     private ServiceHelper(Context ctx){
         this.ctx = ctx.getApplicationContext();
     }
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
     public static ServiceHelper getInstance(Context ctx){
         synchronized (lock) {
             if(instance == null){

@@ -1,5 +1,7 @@
 package com.nbsp.queuer.db.service;
 
+import android.util.Log;
+
 import com.nbsp.queuer.api.Api;
 import com.nbsp.queuer.db.DB;
 import com.nbsp.queuer.db.entity.DetailQueue;

@@ -58,7 +58,11 @@ public class DataBaseTest extends ApplicationTestCase<Application> {
                 .withQuery(QueuesTable.QUERY_ALL).prepare().executeAsBlocking();
         assertNotNull(dqlist);
         assertEquals(dqlist.size(), 1);
+        dq1 = dqlist.get(0);
+        assertEquals(dq1.title(), "testQueue");
+        assertEquals(dq1.members().get(0).name(), "test user name");
     }
+
 
 
 }

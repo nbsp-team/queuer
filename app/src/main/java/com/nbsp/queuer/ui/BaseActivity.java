@@ -3,16 +3,16 @@ package com.nbsp.queuer.ui;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.nbsp.queuer.R;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 /**
  * Created by nickolay on 20.12.15.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends RxAppCompatActivity {
 
     public static final String PREF_THEME = "pref_theme";
     protected Toolbar mToolbar;

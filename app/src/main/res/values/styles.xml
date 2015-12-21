@@ -17,11 +17,6 @@
         <item name="colorAccent">@color/colorAccentOrange</item>
     </style>
 
-    <style name="DarkEditText" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorControlActivated">#cacaca</item>
-        <item name="colorControlHighlight">#cacaca</item>
-    </style>
-
     <style name="FieldEditText" parent="AppTheme">
         <item name="colorControlNormal">#b1b1b1</item>
     </style>
@@ -30,6 +25,12 @@
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
         <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="DarkEditText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#aFFF</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -34,4 +34,16 @@
     <string name="description_hint">Описание</string>
     <string name="title_activity_create_queue">Создать очередь</string>
     <string name="fill_required_fields">Заполните обязательные поля</string>
+
+    <!-- Login Activity -->
+    <string name="login_hint">Email</string>
+    <string name="password_hint">Пароль</string>
+    <string name="enter_action">Войти</string>
+    <string name="open_registration_action">У меня нет аккаунта</string>
+
+    <!-- Register Activity -->
+    <string name="first_name_hint">Имя</string>
+    <string name="last_name_hint">Фамилия</string>
+    <string name="reply_password_hint">Повторите Пароль</string>
+    <string name="register_action">Зарегестрироваться</string>
 </resources>

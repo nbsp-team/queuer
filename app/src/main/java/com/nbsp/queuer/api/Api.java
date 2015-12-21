@@ -1,6 +1,8 @@
 package com.nbsp.queuer.api;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.nbsp.queuer.api.response.LoginResponse;
 import com.nbsp.queuer.db.entity.DetailQueue;
 import com.nbsp.queuer.db.entity.Member;
 import com.nbsp.queuer.db.entity.Queue;
@@ -16,7 +18,7 @@ import rx.Observable;
 public class Api {
     private static Api instance;
 
-    private static final String BASE_URL = "api.com";
+    private static final String BASE_URL = "http://130.211.109.203:8080/api/v1";
 
     private Api() {
         initRestAdapter();
@@ -31,15 +33,18 @@ public class Api {
     }
 
     private RestAdapter mRestAdapter;
-
     private ApiInterface mApiInterface;
 
     private void initRestAdapter() {
         GsonBuilder builder = new GsonBuilder();
 
+        Gson gson = builder
+                .registerTypeAdapterFactory(new ResponseAdapterFactory())
+                .create();
+
         mRestAdapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL)
-                .setConverter(new GsonConverter(builder.create()))
+                .setConverter(new GsonConverter(gson))
                 .setLogLevel(RestAdapter.LogLevel.FULL).setLog(new AndroidLog("RETROFIT"))
                 .build();
     }
@@ -47,12 +52,6 @@ public class Api {
     private void initRequests() {
         mApiInterface = mRestAdapter.create(ApiInterface.class);
     }
-
-    /*
-    public Observable<DirectionsResponse> getDirections(String origin, String dest, TravelMode travelMode) {
-        return mApiInterface.getWalkingDirections(origin, dest, mode);
-    }
-    */
 
     public Observable<List<DetailQueue>> getQueues() {
         List<DetailQueue> list = new ArrayList<>();
@@ -66,5 +65,12 @@ public class Api {
         return Observable.just(list);
     }
 
+    public Observable<LoginResponse> login(String login, String password) {
+        return mApiInterface.login(login, password);
+    }
+
+    public Observable<LoginResponse> register(String login, String password, String firstName, String lastName) {
+        return mApiInterface.register(login, password, firstName, lastName);
+    }
 }
 

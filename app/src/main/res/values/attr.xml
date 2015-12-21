@@ -4,4 +4,9 @@
         <attr name="item_icon" format="integer" />
         <attr name="item_icon_top_margin" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="BoundedView">
+        <attr name="bounded_width" format="dimension" />
+        <attr name="bounded_height" format="dimension" />
+    </declare-styleable>
 </resources>

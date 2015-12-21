@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -23,12 +24,17 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
 
-    // storio
+    // GCM
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+    compile 'eu.inloop:easygcm:1.6.1@aar'
+
+    // StorIO
     compile 'com.pushtorefresh.storio:sqlite:1.6.1'
     compile 'com.pushtorefresh.storio:sqlite-annotations:1.6.1'
     apt 'com.pushtorefresh.storio:sqlite-annotations-processor:1.6.1'
